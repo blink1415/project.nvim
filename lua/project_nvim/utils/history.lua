@@ -154,18 +154,9 @@ function M.write_projects_to_history()
   if file ~= nil then
     local res = sanitize_projects()
 
-    -- Trim table to last 100 entries
-    local len_res = #res
-    local tbl_out
-    if #res > 100 then
-      tbl_out = vim.list_slice(res, len_res - 100, len_res)
-    else
-      tbl_out = res
-    end
-
     -- Transform table to string
     local out = ""
-    for _, v in ipairs(tbl_out) do
+    for _, v in ipairs(res) do
       out = out .. v .. "\n"
     end
 
